@@ -1,6 +1,17 @@
 # Design Patterns in Typescript
 
-## SOLID
+- Design patterns are: generalized, reusable solutions to common design issues in software engineering
+- Reusability
+- Don't reinvent the wheel
+- Language agnostic
+
+## Groups of Design Patterns
+
+- Creational
+- Structural
+- Behavioral
+
+## SOLID Principles
 
 - Single Responsibility Principle
 - Open/Closed Principle
@@ -36,3 +47,20 @@
 ### Dependency Inversion Principle
 
 - Classes and modules should depend on abstractions instead of concrete implementations
+
+## Creational Design Patterns
+
+- The Singleton
+- The Factory
+
+### The Singleton
+
+- Only a single instance of a specific class throughout the entire application
+- Not using the NEW keyword
+
+#### Benefits
+
+- Shared state
+- Avoid long initializations
+- Corss-class communication
+- Perfectly represents unique items
