@@ -19,7 +19,7 @@
 - Interface Segregation Principle
 - Dependency Inversion Principle
 
-### Single Responsability Principle
+### Single Responsibility Principle
 
 - A class, module, or function should be responsible for a single part of the functionality
 - The principle is violated when:
@@ -30,7 +30,7 @@
 ### Open/Closed Principle
 
 - Open to extension - add functionality by extending
-- Closed to midification - you should not add stuff to completed classes
+- Closed to modification - you should not add stuff to completed classes
 - It is better to extend a class thru inheritance or composition instead of modifying to add more methods or functions
 
 ### Liskov Substitution Principle
@@ -41,7 +41,7 @@
 ### Interface Segregation Principle
 
 - A class should not depend on methods that it does not need to implement
-- Distrubute an interface into smaller interfaces
+- Distribute an interface into smaller interfaces
 - Only implement the interfaces that suits you best
 
 ### Dependency Inversion Principle
@@ -62,5 +62,63 @@
 
 - Shared state
 - Avoid long initializations
-- Corss-class communication
+- Cross-class communication
 - Perfectly represents unique items
+
+## Dependency Injection
+
+- **new** is not allowed
+- allowed to create instances of value objects (factories)
+- do not use **new** with dependencies
+
+```typescript
+// without dependency injection
+export class ProfileService {
+  private _usersService: UsersService;
+  private _httpClient: HttpClient;
+  private _endpoints: Endpoints;
+
+  public constructor() {
+    this._usersService = new UsersService();
+    this._httpClient = new HttpClient();
+    this._endpoints = new Endpoints();
+  }
+}
+```
+
+```typescript
+// with dependency injection
+export class ProfileService {
+  private _usersService: UsersService;
+  private _httpClient: HttpClient;
+  private _endpoints: Endpoints;
+
+  // the dependencies are already passed and initialized in the constructor
+  public constructor(
+    usersService: UsersService,
+    httpClient: HttpClient,
+    endpoints: Endpoints
+  ) {
+    this._usersService = usersService;
+    this._httpClient = httpClient;
+    this._endpoints = endpoints;
+  }
+}
+```
+
+### DI container
+
+- it knows how each component is initialized
+- it provides an interface to retrieve an instance of each component with all its dependencies met
+- the DI container has 2 operations:
+  - register: new types
+  - resolve: dependency resolution
+
+### Reflection
+
+- the ability to make use of code metadata to provide **runtime** information and inspection data about classes, interfaces and types
+- operations:
+  - get name of a method
+  - know types of a method's args list
+  - retrieve assembly information
+  - allow DI to work
