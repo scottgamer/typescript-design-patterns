@@ -122,3 +122,23 @@ export class ProfileService {
   - know types of a method's args list
   - retrieve assembly information
   - allow DI to work
+
+### Decorators
+
+- feature that allows to annotate classes, methods, properties and accessors
+- allows to extend functionality without sub classing
+- in typescript, it's necessary to enable this functionality in the `tsconfig.json` file
+
+```json
+{
+  "lib": ["es6"],
+  "types": ["reflect-metadata", "node"],
+  "experimentalDecorators": true,
+  "emitDecoratorMetadata": true
+}
+```
+
+### [InversifyJS](https://github.com/inversify/InversifyJS)
+
+- powerful and lightweight IoC container for javascript and node.js apps
+- install the package: `npm i inversify`
